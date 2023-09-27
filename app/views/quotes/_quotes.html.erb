@@ -1,0 +1,7 @@
+<div class="container p-2 border mb-1 mt-1 d-flex jcb">
+  <%= link_to quote.name, quote_path(quote) %>
+  <div>
+    <%= link_to "edit", edit_quote_path(quote) %>
+    <%= link_to "delete", quote_path(quote), turbo: {method: :delete} %>
+  </div>
+</div>
