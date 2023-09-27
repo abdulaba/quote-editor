@@ -32,9 +32,11 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, status: :see_other, notice: "The quote was deleted"
+    respond_to do |format|
+      format.html { redirect_to quotes_path, status: :see_other, notice: "The quote was deleted" }
+      format.turbo_stream
+    end
   end
-
   private
 
   def quote_params
