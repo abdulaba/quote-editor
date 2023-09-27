@@ -14,7 +14,10 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
     if @quote.save
-      redirect_to quotes_path, notice: "The quote has been created successfully"
+      respond_to do |format|
+        format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity, alert: "An error ocurred, try again"
     end
@@ -37,10 +40,11 @@ class QuotesController < ApplicationController
       format.turbo_stream
     end
   end
+
   private
 
   def quote_params
-    require.params(:quote).permit(:name)
+    params.require(:quote).permit(:name)
   end
 
   def set_quote
