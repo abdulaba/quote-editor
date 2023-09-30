@@ -1,0 +1,12 @@
+<%= turbo_frame_tag quote do %>
+<div class="container p-2 border mb-1 mt-1 d-flex jcb">
+  <%= link_to quote.name, quote_path(quote), data: { turbo_frame: "_top"} %>
+  <div>
+    <%= link_to "edit", edit_quote_path(quote) %>
+    <%= link_to "delete", quote_path(quote),
+    data: {
+      turbo_method: :delete
+      } %>
+  </div>
+</div>
+<% end %>
