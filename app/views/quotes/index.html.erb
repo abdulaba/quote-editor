@@ -4,7 +4,8 @@
       <%= link_to "New quote", new_quote_path, data: { turbo_frame: "new_quote"} %>
   </div>
 <% end %>
-  <%= turbo_frame_tag Quote.new %>
+<%= turbo_frame_tag Quote.new %>
+<%= turbo_stream_from "quotes" %>
 <%= turbo_frame_tag "quotes" do %>
   <%= render partial: "quotes", collection: @quotes, as: :quote %>
 <% end %>
